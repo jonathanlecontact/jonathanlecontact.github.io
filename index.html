@@ -152,21 +152,118 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
     @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 
+    /* ===== HAMBURGER MENU ===== */
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 200; }
+    .nav-hamburger span { display: block; width: 20px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; transition: all 0.3s; }
+    .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 98; opacity: 0; transition: opacity 0.3s; }
+    .nav-overlay.active { display: block; opacity: 1; }
+
     @media (max-width: 900px) {
-      nav { padding: 0 24px; } section { padding: 80px 24px; }
-      .hero { padding: 100px 24px 60px; }
-      .hero-layout { grid-template-columns: 1fr; gap: 40px; }
+      nav { padding: 0 20px; }
+      section { padding: 80px 20px; }
+      .hero { padding: 100px 20px 60px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 32px; }
       .hero-photo-wrap { order: -1; justify-self: center; }
       .hero-photo-frame { width: 200px; height: 250px; }
       .hero-text { text-align: center; max-width: 100%; }
       .hero-ctas { justify-content: center; }
-      .projects-grid, .project-card.featured { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .hero-bio { font-size: 15px; }
+      .section-heading { font-size: clamp(32px, 5vw, 48px); }
+      .section-sub { font-size: 16px; margin-bottom: 40px; }
+
+      .projects-grid { grid-template-columns: 1fr; gap: 14px; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .project-visual-lg { height: 200px; }
+      .project-card { padding: 28px; }
+      .project-title { font-size: 20px; }
+
+      .skills-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .skill-block { padding: 24px 16px; }
+
       .edu-grid { flex-direction: column; align-items: center; }
-      .contact-wrapper { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 8px; align-items: center; }
+      .edu-card { padding: 32px 24px; max-width: 100%; width: 100%; }
+
+      .contact-wrapper { grid-template-columns: 1fr; gap: 20px; }
+      .contact-left { text-align: center; align-items: center; }
+      .contact-heading { font-size: clamp(32px, 5vw, 48px); }
+      .social-links { justify-content: center; flex-wrap: wrap; }
+
+      footer { flex-direction: column; gap: 8px; align-items: center; padding: 32px 20px; }
+
+      /* Mobile nav menu */
+      .nav-hamburger { display: block; }
+      .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0; right: -100%;
+        width: 280px; height: 100vh;
+        background: rgba(10,10,12,0.97);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        padding: 80px 32px 40px;
+        gap: 0;
+        z-index: 99;
+        transition: right 0.35s cubic-bezier(0.25,0.1,0.25,1);
+        border-left: 1px solid var(--border);
+      }
+      .nav-links.active { right: 0; }
+      .nav-links li { border-bottom: 1px solid var(--border); }
+      .nav-links a { font-size: 16px !important; display: block; padding: 18px 0; }
+      .nav-resume { margin-top: 16px !important; text-align: center; display: block !important; }
     }
-    @media (max-width: 560px) { .skills-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+
+    @media (max-width: 560px) {
+      nav { padding: 0 16px; }
+      section { padding: 60px 16px; }
+      .hero { padding: 90px 16px 50px; }
+
+      .hero-photo-frame { width: 170px; height: 215px; border-radius: 20px; }
+      .photo-badge { min-width: 190px; bottom: -20px; }
+      .photo-badge-inner { padding: 10px 14px; }
+      .photo-badge-role { font-size: 11px; }
+      .photo-badge-company { font-size: 10px; }
+      .hero-name { font-size: clamp(36px, 10vw, 48px); margin-bottom: 16px; }
+      .hero-bio { font-size: 14px; line-height: 1.6; margin-bottom: 14px; }
+      .hero-typed { font-size: 13px; }
+      .hero-ctas { gap: 10px; }
+      .btn { font-size: 15px; padding: 10px 22px; }
+      .btn-outline { font-size: 13px; padding: 9px 18px; }
+
+      .skills-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .skill-block { padding: 20px 12px; }
+      .skill-icon-wrap { width: 48px; height: 48px; margin-bottom: 14px; }
+      .skill-name { font-size: 12px; }
+      .skill-items { font-size: 13px; line-height: 1.8; }
+
+      .project-card { padding: 24px 20px; }
+      .project-title { font-size: 18px; }
+      .project-desc { font-size: 14px; }
+      .project-visual { height: 160px; }
+      .project-icon { width: 36px; height: 36px; }
+
+      .edu-card { padding: 28px 20px; }
+      .edu-logo-wrap { width: 64px; height: 64px; }
+      .edu-school { font-size: 17px; }
+
+      .contact-card { padding: 28px 20px; }
+      .contact-card p { font-size: 14px; }
+      .detail-row { flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 0; }
+      .contact-email { font-size: 15px; word-break: break-all; }
+      .social-links { gap: 8px; }
+      .social-link { font-size: 12px; padding: 8px 16px; }
+
+      footer { padding: 24px 16px; font-size: 11px; }
+
+      /* Reduce orb sizes on mobile for performance */
+      .hero-orb-1 { width: 300px; height: 300px; }
+      .hero-orb-2 { width: 250px; height: 250px; }
+      .skills-orb { width: 250px; height: 250px; }
+    }
 
     /* ===== LOADING ANIMATION ===== */
     .loader-screen {
@@ -306,9 +403,13 @@
       <div class="loader-counter" id="loaderCounter">0%</div>
     </div>
   </div>
+  <div class="nav-overlay" id="navOverlay"></div>
   <nav>
     <a href="#" class="nav-logo">Jonathan Le</a>
-    <ul class="nav-links">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#education">Education</a></li>
@@ -504,15 +605,17 @@
     type();
 
     document.querySelectorAll('.depth-card').forEach(function(card) {
-      card.addEventListener('mousemove', function(e) {
-        var rect = card.getBoundingClientRect();
-        var x = (e.clientX - rect.left) / rect.width - 0.5;
-        var y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = 'perspective(800px) rotateY(' + (x * 5) + 'deg) rotateX(' + (-y * 5) + 'deg) translateY(-4px) scale(1.01)';
-      });
-      card.addEventListener('mouseleave', function() {
-        card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) translateY(0) scale(1)';
-      });
+      if (window.matchMedia('(hover: hover)').matches) {
+        card.addEventListener('mousemove', function(e) {
+          var rect = card.getBoundingClientRect();
+          var x = (e.clientX - rect.left) / rect.width - 0.5;
+          var y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = 'perspective(800px) rotateY(' + (x * 5) + 'deg) rotateX(' + (-y * 5) + 'deg) translateY(-4px) scale(1.01)';
+        });
+        card.addEventListener('mouseleave', function() {
+          card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) translateY(0) scale(1)';
+        });
+      }
     });
 
     var ticking = false;
@@ -553,6 +656,32 @@
         span.textContent = char;
         span.style.transform = 'rotate(' + (step * i) + 'deg)';
         el.appendChild(span);
+      });
+    })();
+
+    // ===== MOBILE NAV TOGGLE =====
+    (function() {
+      var hamburger = document.getElementById('navHamburger');
+      var navLinks = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      function closeMenu() {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      function openMenu() {
+        hamburger.classList.add('active');
+        navLinks.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      hamburger.addEventListener('click', function() {
+        if (navLinks.classList.contains('active')) { closeMenu(); } else { openMenu(); }
+      });
+      overlay.addEventListener('click', closeMenu);
+      navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMenu);
       });
     })();
 
