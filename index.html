@@ -309,9 +309,9 @@
       position: relative;
       width: clamp(220px, 40vw, 300px);
       height: clamp(220px, 40vw, 300px);
+      margin: 0 auto;
       opacity: 0;
       animation: fadeIn 0.8s 0.3s forwards;
-      --circle-radius: min(150px, 20vw);
     }
     .loader-spinning-text {
       position: absolute;
@@ -323,12 +323,12 @@
       top: 0;
       left: 50%;
       font-family: 'Geist Mono', monospace;
-      font-size: clamp(11px, 2vw, 15px);
+      font-size: 15px;
       font-weight: 600;
       color: rgba(255,255,255,0.5);
       text-transform: uppercase;
-      transform-origin: 0 var(--circle-radius);
       display: inline-block;
+      /* transform-origin set dynamically by JS */
     }
     @keyframes spinCircle {
       from { transform: rotate(0deg); }
@@ -662,12 +662,17 @@
     (function() {
       var text = 'JONATHAN  LE  •  DATA  ANALYST  •  ';
       var el = document.getElementById('spinningText');
+      var wrap = el.parentElement;
+      var radius = wrap.offsetWidth / 2;
       var chars = text.split('');
       var step = 360 / chars.length;
+      var fontSize = Math.max(11, Math.min(15, radius * 0.1));
       chars.forEach(function(char, i) {
         var span = document.createElement('span');
         span.textContent = char;
+        span.style.fontSize = fontSize + 'px';
         span.style.transform = 'rotate(' + (step * i) + 'deg)';
+        span.style.transformOrigin = '0 ' + radius + 'px';
         el.appendChild(span);
       });
     })();
