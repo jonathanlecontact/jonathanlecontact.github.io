@@ -602,6 +602,10 @@
       });
     })();
 
+    // ===== SCROLL TO TOP ON LOAD =====
+    window.history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+
     // ===== LOADER SCRIPT =====
     (function() {
       var counter = document.getElementById('loaderCounter');
