@@ -205,6 +205,7 @@
       height: clamp(220px, 40vw, 300px);
       opacity: 0;
       animation: fadeIn 0.8s 0.3s forwards;
+      margin: 0 auto;
     }
     .loader-spinning-text {
       position: absolute;
@@ -216,11 +217,11 @@
       top: 0;
       left: 50%;
       font-family: 'Geist Mono', monospace;
-      font-size: 15px;
+      font-size: clamp(11px, 2vw, 15px);
       font-weight: 600;
       color: rgba(255,255,255,0.5);
       text-transform: uppercase;
-      transform-origin: 0 150px;
+      transform-origin: 0 calc(clamp(220px, 40vw, 300px) / 2);
       display: inline-block;
     }
     @keyframes spinCircle {
@@ -510,7 +511,7 @@
     <div class="contact-wrapper">
       <div class="contact-left reveal">
         <h2 class="contact-heading">Let's work<br>together.</h2>
-        <a href="/cdn-cgi/l/email-protection#08626766697c606966646d6b67667c696b7c486f65696164266b6765" class="contact-email"><span class="__cf_email__" data-cfemail="eb8184858a9f838a85878e8884859f8a889fab8c868a8287c5888486">[email&#160;protected]</span></a>
+        <a href="mailto:jonathanlecontact@gmail.com" class="contact-email">jonathanlecontact@gmail.com</a>
         <div class="social-links">
           <a href="https://www.linkedin.com/in/jonathanlecontact/" target="_blank" class="social-link">&#8599; LinkedIn</a>
           <a href="https://github.com/jonathanlecontact" target="_blank" class="social-link">&#8599; GitHub</a>
@@ -518,7 +519,7 @@
       </div>
       <div class="contact-card depth-card reveal">
         <p>Open to full-time roles, freelance projects, and collaborations. If you have interesting data problems to solve, I'd love to hear about them.</p>
-        <div class="detail-row"><span class="detail-label">Email</span><span class="detail-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f1510111e0b171e11131a1c10110b1e1c0b3f18121e1613511c1012">[email&#160;protected]</a></span></div>
+        <div class="detail-row"><span class="detail-label">Email</span><span class="detail-value"><a href="mailto:jonathanlecontact@gmail.com">jonathanlecontact@gmail.com</a></span></div>
         <div class="detail-row"><span class="detail-label">Phone</span><span class="detail-value">(408) 667-1604</span></div>
         <div class="detail-row"><span class="detail-label">Location</span><span class="detail-value">San Jose, CA 95111</span></div>
         <div class="detail-row"><span class="detail-label">Status</span><span class="detail-value status">&#9679; Open to opportunities</span></div>
@@ -528,7 +529,7 @@
 
   <footer><p>&copy; 2025 Jonathan Le</p><p>Data Analyst &middot; San Jose, CA</p></footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     var reveals = document.querySelectorAll('.reveal');
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
