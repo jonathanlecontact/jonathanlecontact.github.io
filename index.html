@@ -89,6 +89,8 @@
     .tag { font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 980px; border: 1px solid var(--border); color: var(--text-secondary); }
     .tag.blue { border-color: rgba(41,151,255,0.3); color: var(--blue); background: var(--blue-soft); }
     .tag.purple { border-color: rgba(191,90,242,0.3); color: var(--purple); background: var(--purple-soft); }
+    .tag.green { border-color: rgba(48,209,88,0.3); color: var(--green); background: rgba(48,209,88,0.1); }
+    .tag.orange { border-color: rgba(255,214,10,0.4); color: #FFD60A; background: rgba(255,214,10,0.12); }
     .project-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
     .project-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .project-icon svg { width: 22px; height: 22px; }
@@ -107,6 +109,63 @@
     .bar { flex: 1; border-radius: 6px 6px 0 0; }
     .bar.blue { background: linear-gradient(180deg, var(--blue), rgba(41,151,255,0.3)); }
     .bar.purple { background: linear-gradient(180deg, var(--purple), rgba(191,90,242,0.3)); }
+
+    /* ===== EXPERIENCE & CERTIFICATIONS SIDE-BY-SIDE ===== */
+    .exp-cert-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+    .exp-orb { width: 500px; height: 500px; background: radial-gradient(circle, rgba(41,151,255,0.14) 0%, transparent 70%); top: 10%; right: -8%; animation: f2 16s ease-in-out infinite; }
+    .exp-column-heading { font-size: 13px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+    .exp-column-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .exp-timeline { position: relative; }
+    .exp-timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, transparent 0%, var(--border) 10%, var(--border) 90%, transparent 100%); }
+    .exp-item { display: flex; gap: 24px; padding-bottom: 20px; position: relative; }
+    .exp-item:last-child { padding-bottom: 0; }
+    .exp-dot-wrap { position: relative; flex-shrink: 0; width: 32px; display: flex; justify-content: center; padding-top: 4px; }
+    .exp-dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--blue); background: var(--bg); position: relative; z-index: 2; transition: all 0.4s; }
+    .exp-item:hover .exp-dot { background: var(--blue); box-shadow: 0 0 12px rgba(41,151,255,0.5); }
+    .exp-card { flex: 1; padding: 24px; }
+    .exp-card-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .exp-role { font-size: 17px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+    .exp-company { font-size: 13px; font-weight: 500; color: var(--blue); margin-bottom: 2px; }
+    .exp-date { font-size: 11px; font-weight: 500; color: var(--text-tertiary); padding: 3px 12px; border: 1px solid var(--border); border-radius: 980px; white-space: nowrap; }
+    .exp-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 14px; }
+    .exp-highlights { display: flex; flex-wrap: wrap; gap: 6px; }
+    .exp-tag { font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: 980px; border: 1px solid var(--border); color: var(--text-secondary); background: var(--bg-glass); }
+    .exp-tag.blue { border-color: rgba(41,151,255,0.25); color: var(--blue); background: var(--blue-soft); }
+    .exp-tag.purple { border-color: rgba(191,90,242,0.25); color: var(--purple); background: var(--purple-soft); }
+    .exp-tag.green { border-color: rgba(48,209,88,0.25); color: var(--green); background: rgba(48,209,88,0.1); }
+    .exp-tag.orange { border-color: rgba(255,214,10,0.4); color: #FFD60A; background: rgba(255,214,10,0.12); }
+
+    /* Certifications */
+    .cert-list { display: flex; flex-direction: column; gap: 12px; }
+    .cert-card { padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; }
+    .cert-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+    .cert-icon.dc { background: linear-gradient(135deg, rgba(3,239,98,0.15), rgba(3,239,98,0.05)); }
+    .cert-icon.ibm { background: linear-gradient(135deg, rgba(42,115,204,0.15), rgba(42,115,204,0.05)); }
+    .cert-icon.udemy { background: linear-gradient(135deg, rgba(164,53,240,0.15), rgba(164,53,240,0.05)); }
+    .cert-content { flex: 1; min-width: 0; }
+    .cert-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; line-height: 1.4; }
+    .cert-issuer { font-size: 12px; color: var(--blue); font-weight: 500; margin-bottom: 6px; }
+    .cert-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .cert-hours { font-size: 11px; color: var(--text-secondary); display: flex; align-items: center; gap: 4px; }
+    .cert-hours svg { width: 12px; height: 12px; }
+
+    @media (max-width: 900px) {
+      .exp-cert-wrapper { grid-template-columns: 1fr; }
+      .exp-timeline::before { left: 11px; }
+      .exp-dot-wrap { width: 24px; }
+      .exp-item { gap: 16px; }
+      .exp-card { padding: 20px 16px; }
+    }
+    @media (max-width: 560px) {
+      .exp-card-header { flex-direction: column; }
+    }
+
+    /* ===== ENHANCED PROJECTS ===== */
+    .project-metrics { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+    .project-metric { display: flex; flex-direction: column; gap: 2px; }
+    .project-metric-value { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+    .project-metric-value.blue { background: linear-gradient(90deg, var(--blue), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .project-metric-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; }
 
     .skills-orb { width: 500px; height: 500px; background: radial-gradient(circle, rgba(48,209,88,0.12) 0%, transparent 70%); top: 30%; left: -5%; animation: f1 18s ease-in-out infinite; }
     .skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; max-width: 1120px; margin: 0 auto; position: relative; z-index: 2; }
@@ -385,9 +444,10 @@
   <nav>
     <a href="#" class="nav-logo">Jonathan Le</a>
     <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="https://docs.google.com/document/d/1YKUAK_2af66zfzkAL2mSwhmKk90JlFkMeiNWliawrcA/edit?tab=t.0" target="_blank" class="nav-resume">&#9660; Resume</a></li>
     </ul>
@@ -432,80 +492,179 @@
     </div>
   </section>
 
-  <section id="projects">
-    <p class="section-label reveal">Projects</p>
-    <h2 class="section-heading reveal">Built for insight.</h2>
-    <p class="section-sub reveal">From Power BI dashboards to Python pipelines, explore the work that turns raw data into decisions.</p>
-    <div class="projects-grid">
-      <a href="https://github.com/jonathanlecontact/powerbi" target="_blank" class="project-card depth-card featured reveal">
-        <div>
-          <div class="project-tags"><span class="tag blue">Power BI</span><span class="tag purple">KPI Dashboard</span><span class="tag">Call Center</span></div>
-          <div class="project-header">
-            <div class="project-icon pbi"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="12" width="4" height="9" rx="1" fill="#FF9F0A"/><rect x="10" y="7" width="4" height="14" rx="1" fill="#FFB340"/><rect x="17" y="3" width="4" height="18" rx="1" fill="#FFCC70"/></svg></div>
-            <h3 class="project-title">PwC Performance Dashboard</h3>
-          </div>
-          <p class="project-desc">Interactive Power BI dashboard analyzing KPIs, agent efficiency, and customer satisfaction trends across hundreds of call center interactions.</p>
-          <span class="project-link">View Project &#8594;</span>
-        </div>
-        <div class="project-visual project-visual-lg">
-          <div class="viz-bars">
-            <div class="bar blue" style="height:45%"></div><div class="bar purple" style="height:70%"></div>
-            <div class="bar blue" style="height:55%"></div><div class="bar purple" style="height:85%"></div>
-            <div class="bar blue" style="height:60%"></div><div class="bar purple" style="height:40%"></div>
-            <div class="bar blue" style="height:75%"></div><div class="bar purple" style="height:90%"></div>
-            <div class="bar blue" style="height:50%"></div>
-          </div>
-        </div>
-      </a>
-      <a href="https://github.com/jonathanlecontact/SQL" target="_blank" class="project-card depth-card reveal">
-        <div class="project-tags"><span class="tag blue">SQL</span><span class="tag">Data Queries</span></div>
-        <div class="project-header">
-          <div class="project-icon sql"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="8" ry="3" stroke="#2997FF" stroke-width="1.5"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6" stroke="#2997FF" stroke-width="1.5"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" stroke="#64D2FF" stroke-width="1.5"/></svg></div>
-          <h3 class="project-title">SQL Portfolio</h3>
-        </div>
-        <p class="project-desc">Complex joins, window functions, CTEs, and query optimization across various datasets and business scenarios.</p>
-        <span class="project-link">View Projects &#8594;</span>
-      </a>
-      <a href="https://public.tableau.com/app/profile/jonathan.le1677/vizzes" target="_blank" class="project-card depth-card reveal">
-        <div class="project-tags"><span class="tag">Tableau</span><span class="tag purple">Data Viz</span></div>
-        <div class="project-header">
-          <div class="project-icon tableau"><svg viewBox="0 0 24 24" fill="none"><rect x="11" y="3" width="2" height="7" rx="0.5" fill="#30D158"/><rect x="11" y="14" width="2" height="7" rx="0.5" fill="#30D158"/><rect x="3" y="11" width="7" height="2" rx="0.5" fill="#30D158"/><rect x="14" y="11" width="7" height="2" rx="0.5" fill="#30D158"/><rect x="16" y="5" width="1.5" height="4" rx="0.5" fill="#64D2FF" opacity="0.7"/><rect x="6.5" y="15" width="1.5" height="4" rx="0.5" fill="#64D2FF" opacity="0.7"/></svg></div>
-          <h3 class="project-title">Tableau Portfolio</h3>
-        </div>
-        <p class="project-desc">Interactive dashboards exploring sales, HR, and financial datasets with clean, readable visual design.</p>
-        <span class="project-link">View Projects &#8594;</span>
-      </a>
-      <a href="https://github.com/jonathanlecontact/Excel" target="_blank" class="project-card depth-card reveal">
-        <div class="project-tags"><span class="tag">Excel</span><span class="tag blue">Modeling</span></div>
-        <div class="project-header">
-          <div class="project-icon excel"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#30D158" stroke-width="1.5"/><path d="M8 8l3.5 4L8 16" stroke="#30D158" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 8L12 12l3.5 4" stroke="#64D2FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3 class="project-title">Excel Portfolio</h3>
-        </div>
-        <p class="project-desc">Pivot tables, advanced formulas, VBA automation, and financial modeling solving real-world data challenges.</p>
-        <span class="project-link">View Projects &#8594;</span>
-      </a>
-      <a href="https://github.com/jonathanlecontact/Python" target="_blank" class="project-card depth-card reveal">
-        <div class="project-tags"><span class="tag blue">Python</span><span class="tag">Pandas</span><span class="tag purple">Analysis</span></div>
-        <div class="project-header">
-          <div class="project-icon python"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C9 3 7 4.5 7 7v2h4v1H6c-2 0-3 1.5-3 4s1 4 3 4h2v-3c0-1.5 1-3 3-3h4c1.5 0 3-1 3-3V7c0-2.5-2-4-5-4z" fill="rgba(41,151,255,0.3)" stroke="#2997FF" stroke-width="1"/><path d="M12 21c3 0 5-1.5 5-4v-2h-4v-1h5c2 0 3-1.5 3-4s-1-4-3-4h-2v3c0 1.5-1 3-3 3h-4c-1.5 0-3 1-3 3v4c0 2.5 2 4 5 4z" fill="rgba(191,90,242,0.3)" stroke="#BF5AF2" stroke-width="1"/><circle cx="9.5" cy="6" r="1" fill="#2997FF"/><circle cx="14.5" cy="18" r="1" fill="#BF5AF2"/></svg></div>
-          <h3 class="project-title">Python Portfolio</h3>
-        </div>
-        <p class="project-desc">EDA, data cleaning pipelines, and statistical analysis using pandas, matplotlib, and numpy.</p>
-        <span class="project-link">View Projects &#8594;</span>
-      </a>
-    </div>
-  </section>
+  <!-- ===== EXPERIENCE & CERTIFICATIONS ===== -->
+  <section id="experience">
+    <div class="orb exp-orb"></div>
+    <p class="section-label reveal">Experience &amp; Certifications</p>
+    <h2 class="section-heading reveal">Where I've made impact.</h2>
+    <p class="section-sub reveal">Professional experience and continuous learning that fuel my data analytics expertise.</p>
+    <div class="exp-cert-wrapper">
 
-  <section id="skills">
-    <div class="orb skills-orb"></div>
-    <p class="section-label reveal">Capabilities</p>
-    <h2 class="section-heading reveal">Tools of the trade.</h2>
-    <p class="section-sub reveal">A focused toolkit for extracting, transforming, and visualizing data at every stage.</p>
-    <div class="skills-grid">
-      <div class="skill-block depth-card reveal"><div class="skill-icon-wrap db">&#128452;</div><p class="skill-name">Databases</p><p class="skill-items">SQL<br>MySQL<br>PostgreSQL<br>BigQuery</p></div>
-      <div class="skill-block depth-card reveal"><div class="skill-icon-wrap viz">&#128202;</div><p class="skill-name">Visualization</p><p class="skill-items">Tableau<br>Power BI<br>Matplotlib<br>Seaborn</p></div>
-      <div class="skill-block depth-card reveal"><div class="skill-icon-wrap code">&#128013;</div><p class="skill-name">Programming</p><p class="skill-items">Python<br>Pandas<br>NumPy<br>Jupyter</p></div>
-      <div class="skill-block depth-card reveal"><div class="skill-icon-wrap prod">&#128203;</div><p class="skill-name">Productivity</p><p class="skill-items">Excel<br>Google Sheets<br>VBA<br>Pivot Tables</p></div>
+      <!-- LEFT: Experience -->
+      <div class="reveal">
+        <p class="exp-column-heading">Experience</p>
+        <div class="exp-timeline">
+
+          <div class="exp-item">
+            <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+            <div class="exp-card depth-card">
+              <div class="exp-card-header">
+                <div>
+                  <p class="exp-role">Technical Support Engineer</p>
+                  <p class="exp-company">Cognizant &middot; Mountain View, CA</p>
+                </div>
+                <span class="exp-date">Jan 2026 &ndash; Present</span>
+              </div>
+              <p class="exp-desc">Lead large-scale ETL and research operations for AR/VR initiatives, delivering complex datasets to engineering and AI/ML teams. Analyze and visualize weekly operational KPIs for a 10+ person cross-functional team, and maintain automated trackers that significantly reduce manual reporting effort.</p>
+              <div class="exp-highlights">
+                <span class="exp-tag blue">SQL</span>
+                <span class="exp-tag blue">ETL</span>
+                <span class="exp-tag orange">KPI Dashboards</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+            <div class="exp-card depth-card">
+              <div class="exp-card-header">
+                <div>
+                  <p class="exp-role">Management Analyst</p>
+                  <p class="exp-company">City of Milpitas · Milpitas, CA</p>
+                </div>
+                <span class="exp-date">Sep 2023 &ndash; Nov 2024</span>
+              </div>
+              <p class="exp-desc">Synthesized complex municipal data into strategic policy recommendations and legislative briefings to support Council Member Phan's decision-making and citywide initiatives.</p>
+              <div class="exp-highlights">
+                <span class="exp-tag">Policy Analysis</span>
+                <span class="exp-tag blue">Data Synthesis</span>
+                <span class="exp-tag orange">PowerPoint</span>
+                <span class="exp-tag green">Excel</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+            <div class="exp-card depth-card">
+              <div class="exp-card-header">
+                <div>
+                  <p class="exp-role">Program Operations Coordinator</p>
+                  <p class="exp-company">City of Milpitas · Milpitas, CA</p>
+                </div>
+                <span class="exp-date">Dec 2022 &ndash; Sep 2023</span>
+              </div>
+              <p class="exp-desc">Facilitated the execution of municipal programs and streamlined constituent services to improve departmental efficiency and community engagement.</p>
+              <div class="exp-highlights">
+                <span class="exp-tag">Program Management</span>
+                <span class="exp-tag">Operations</span>
+                <span class="exp-tag">Constituent Services</span>
+                <span class="exp-tag green">Excel</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
+            <div class="exp-card depth-card">
+              <div class="exp-card-header">
+                <div>
+                  <p class="exp-role">Policy &amp; Data Analyst</p>
+                  <p class="exp-company">City of Milpitas · Milpitas, CA</p>
+                </div>
+                <span class="exp-date">Aug 2022 &ndash; Dec 2022</span>
+              </div>
+              <p class="exp-desc">Organized community feedback and tracked regional policy trends to develop data-driven presentations and structured summaries for stakeholder alignment.</p>
+              <div class="exp-highlights">
+                <span class="exp-tag blue">Data Analysis</span>
+                <span class="exp-tag">Policy Research</span>
+                <span class="exp-tag orange">PowerPoint</span>
+                <span class="exp-tag green">Excel</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Certifications -->
+      <div class="reveal">
+        <p class="exp-column-heading">Certifications</p>
+        <div class="cert-list">
+
+          <div class="cert-card depth-card">
+            <div class="cert-icon ibm">
+              <img src="data:image/png;base64,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" alt="Coursera" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"/>
+            </div>
+            <div class="cert-content">
+              <p class="cert-name">IBM Data Analyst Professional Certificate</p>
+              <p class="cert-issuer">Coursera &middot; IBM</p>
+              <div class="cert-meta">
+                <span class="cert-hours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~150 hours</span>
+                <span class="exp-tag blue">9 Courses</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-card depth-card">
+            <div class="cert-icon dc">
+              <img src="data:image/jpeg;base64,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" alt="DataCamp" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"/>
+            </div>
+            <div class="cert-content">
+              <p class="cert-name">Associate Data Analyst in SQL</p>
+              <p class="cert-issuer">DataCamp</p>
+              <div class="cert-meta">
+                <span class="cert-hours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~39 hours</span>
+                <span class="exp-tag blue">SQL Track</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-card depth-card">
+            <div class="cert-icon udemy">
+              <img src="data:image/png;base64,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" alt="Udemy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"/>
+            </div>
+            <div class="cert-content">
+              <p class="cert-name">Python for Data Science &amp; ML Bootcamp</p>
+              <p class="cert-issuer">Udemy &middot; Jose Portilla</p>
+              <div class="cert-meta">
+                <span class="cert-hours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~25 hours</span>
+                <span class="exp-tag purple">Python</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-card depth-card">
+            <div class="cert-icon udemy">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6AAAI9klEQVR42u2aXWwc1RXH/+fcmd211142OCGpQTihFOrmo2ASilqKqHhBNDQSvLVVowg1VZpCHxCPIB4CSJHKUygk0IKEVBFRqWqkUqlSI1WtVGEnMUooyMEpFHDaEjnxx/pjd+aefx+usziOY5JmbC1h79P6eubM/O7/3Hs+doUkvkhD8QUbTeAmcBP4/x0EWP80+wNnzVwpwAQhJIwzfDzLSoPZpxNXCrCABjFRwAtAgzcziIAKEShliRSOlsyblYB4GAlRhULMaCIKAhQI5MpRWAgHwHuBOlF89PczH/9tVFVUxHsh4ZdqG8vSZFrmqQ6AjH843ferM//8gwF6w3dl40NXla5vAcy8qJPPDzBBwYxnEhAABoBQGkVEBMmEf/s3Z/7xaqU6XCq05wSuOj6hKybX/aB1w/eXxUVHGLyIE8yYICBEsBhmpCGAWeedeUsIJRimUZ0AcvxPp4+9UDkzkIuL5ZxL6T2F6gRVrVSn27urGx8q3nhvGZDU6IQidWsBWw1wjaIwZ/SEKAGBJ4VeNBIAp45OvLlv/D9/kTgqFArqmXiLIpCgV1PGOUTVanXKatfeabfvaFu+vg2ApaZOIABlxncIiDSIS5OEiSi8eDECERQ68e9a/yvDAwdqWikVigWTBKYEBSZUIpAYYHTq6KYnqtY62X1/fMu2ZcXOnAFIqU4oBEwgmRyx2exhhvc2JeGcplP+nd+OHHt1avJkrrW15NR7VvVTSG8SgXCESGpiZEEIp0LjZKWWu6769a1x9wPluCXyZkoRFYpJ4wADRk9xDuC//jx+eO/I8NtxobUUxaCniQ+0pl6oQohLyEiMhEBUQCAFnAmcY1p105OVq9fXbtteXn1POwDzEJdNpM5IYYMoTr871fvi8McH45y15trMk5LGFIN6UEEHSSAiGvupadDFLXmzxKgQE0kMEQiFF8ROpDaVTLnprru5aftVV3+11QiVxji0SIrgrVdO9/+yZtP5YmvkRTwtImARNQ0PShWxiFRlbHJi+VqhS04di0qtLZKjN2rQmjQRQoSECkSSscS3TdyyM+750UpSLv/Y0iw2MAF+eDD1U8X2tjxNaIxM1UDxJkqIE8mbTI9NpW2jPY/o937dseWllRt/xrR9dGq8GjNWFIwuETUIxXsFTMwstyyWSvn9g0kD5dIKBZAvRjmkZpKoKlOIT0WAyCGJEU1OWJobWbPFbfxxR2l1ASAhm3666ub7qn0vnX7/j2fipCUu5jzUpeboUqUXClQSEWdxu2sg4BBpzLyJIxhbaqJexIQFMJmWYT+1clN6+/aOa+8oAjCfiiphNJZW5+/Z9aWPN48fefH0J2/GhbgdLaz6vDJRWmRkRINTqwLMJA5nUi2FCKmGXKrijEKLNDLvK5XJwpfTO7dF67asghMaAaoqoQrSmRlBXHdH+3Ub298+MPzOS2MTH2jUrowpqaTOoKI0sSirOicThSEQwpRJZAVziQinR1N31WT3T/S2H16T74gA0iA6kw+HPFTgRGcOeURc90DHjXcnR14dHtw/7kfz+WKe6kmVbI7n7IBDcm/Oi0SR49S4JK5y/X3as73c8ZUWAKk351QurJAoQKae+avjb/58Vfe902/tGz1xsObY1lqMUpn24huqASAAc8gzcacr4yvWWc/20uq72wEk3kci0UUoZKLqKGYGLrs5/51fXNP119H+F86MHs2LzzuNAcukYMoEmAAmx6rSkX7rkfa1W9olL2YUSOT04tcMIhBTKD0gdsO3y2u+UXr3d2d694xUxhNAQvXZEJmWGd/9/X+v7ym3d+UNBq/iwl7lTFH7mXkhSYAiSgKkaOoZKyFa+aj6weFPvnb/teoaJpc2UEPV772Iq4cPCgRGyMVLc7bil5DRmDFwGrxmURFn1uIJnY3FaMSdlTwb09L89rAJfGWNKLudxnl3h4Se5RIaWZIGwIKlKrMoZDMxko3CZqaqO3fu7Ovrc86ZWZh3zqVpum3bth07dnjvnVsoqIQLnn/++ZdffjmKIu9ncklV9d5v2rTpueeeCw9qFJc+cuRIX1/f+fN33XXX2bTiM/MOnDhxYl4jURQ13B4uFovOOedcXZwoitI0zefzF28kn88758KNdTfx3re2tjYcsJkF1DqwiHjvL+mMIOm9DzfO9vb6NmmGpSZwE7gJ3ARuAjeBm8BN4CZwE7gJ3ARuAn8+gC+1Hv7cA19SF+pCfa8MF0IXG2xsbOzijYyMjMw7n8vlGgg4LP/y5cvnzIe+TH9/P8mFW5ZBW5KHDx+u3zh7rFixouGAOzs7AcxuHYdO8qFDh44fP05ygb5U6GANDAz09/eLnNMqDwaD8Uw6W5m59E033TRnswVhq9XqM888E9rL827FsBYismvXrmq1qqpzjADo7u6es5qXpc9ljkBy6NCh87exiARn3rt3bwBLkiRNU++99z5N01qtZmYk9+zZExz7fCrn3NGjR+sPusyRAXAgqVara9euFZHZ2OHPwPzUU0/VarXz763Vak8++eS8tGGmp6cnSZKwLo0CnCQJyaeffhrnfksgZ0dYhQ0bNuzevbu3t3doaGhoaKi3t3f37t3r16+ffeVs4GDq2WefrT+igRQ2s1OnTq1atUpV5w1Rsw/qcrlcLpcXDr9B3q6urpGRkdDlbyBgkmmakty/fz+AOI7nPWBUdc6/oiiad3VEJI5jAAcOHMhQ3iyB68yPPvroAiQX8t452gZnfvzxx7OlzRg4HMIkH3vssbqAlxRL6sICeOKJJ+qL2KDAgTm84r59+zo6OurY88abOdGrftp1dna+9tprgTarw3mxgGczDw4Obt26tVAozBEwjuNo1pi9EKVS6eGHHz558uQi0ZJclJ8thSQhKDYwMPD666+/8cYbx44dq1Qq815fLpdvvfXWzZs3P/jgg11dXQDSNM3wS/BzvGmRgOs5XD3kDA0Nvffee4ODg+Pj4xMTEyJSKpXa2tq6u7vXrFmzcuXKcFmaphcKbI0LPKdmMrOF93D9skVFXSLgOUXC+Y8LeVhWv0pqIOBmE68J3ARuAjeBm8CfOf4HWJVYkop4R+gAAAAASUVORK5CYII=" alt="Udemy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"/>
+            </div>
+            <div class="cert-content">
+              <p class="cert-name">MySQL for Data Analytics &amp; Business Intelligence</p>
+              <p class="cert-issuer">Udemy &middot; 365 Careers</p>
+              <div class="cert-meta">
+                <span class="cert-hours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~12 hours</span>
+                <span class="exp-tag blue">MySQL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-card depth-card">
+            <div class="cert-icon udemy">
+              <img src="data:image/png;base64,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" alt="Udemy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"/>
+            </div>
+            <div class="cert-content">
+              <p class="cert-name">The Complete SQL Bootcamp: Zero to Hero</p>
+              <p class="cert-issuer">Udemy &middot; Jose Portilla</p>
+              <div class="cert-meta">
+                <span class="cert-hours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~9 hours</span>
+                <span class="exp-tag blue">PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -534,13 +693,95 @@
     </div>
   </section>
 
+  <section id="projects">
+    <p class="section-label reveal">Projects</p>
+    <h2 class="section-heading reveal">Built for insight.</h2>
+    <p class="section-sub reveal">From Power BI dashboards to Python pipelines, explore the work that turns raw data into decisions.</p>
+    <div class="projects-grid">
+      <a href="https://github.com/jonathanlecontact/powerbi" target="_blank" class="project-card depth-card featured reveal">
+        <div>
+          <div class="project-tags"><span class="tag orange">Power BI</span><span class="tag orange">KPI Dashboard</span><span class="tag">Call Center</span></div>
+          <div class="project-header">
+            <div class="project-icon pbi"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="12" width="4" height="9" rx="1" fill="#FF9F0A"/><rect x="10" y="7" width="4" height="14" rx="1" fill="#FFB340"/><rect x="17" y="3" width="4" height="18" rx="1" fill="#FFCC70"/></svg></div>
+            <h3 class="project-title">PwC Performance Dashboard</h3>
+          </div>
+          <div class="project-metrics">
+            <div class="project-metric"><span class="project-metric-value blue">500+</span><span class="project-metric-label">Records Analyzed</span></div>
+            <div class="project-metric"><span class="project-metric-value blue">12</span><span class="project-metric-label">KPI Metrics</span></div>
+            <div class="project-metric"><span class="project-metric-value blue">3</span><span class="project-metric-label">Dashboard Views</span></div>
+          </div>
+          <p class="project-desc">Interactive Power BI dashboard analyzing KPIs, agent efficiency, and customer satisfaction trends across hundreds of call center interactions. Built with dynamic filters, DAX measures, and a clean visual hierarchy for stakeholder presentations.</p>
+          <span class="project-link">View Project &#8594;</span>
+        </div>
+        <div class="project-visual project-visual-lg">
+          <div class="viz-bars">
+            <div class="bar blue" style="height:45%"></div><div class="bar purple" style="height:70%"></div>
+            <div class="bar blue" style="height:55%"></div><div class="bar purple" style="height:85%"></div>
+            <div class="bar blue" style="height:60%"></div><div class="bar purple" style="height:40%"></div>
+            <div class="bar blue" style="height:75%"></div><div class="bar purple" style="height:90%"></div>
+            <div class="bar blue" style="height:50%"></div>
+          </div>
+        </div>
+      </a>
+      <a href="https://github.com/jonathanlecontact/SQL" target="_blank" class="project-card depth-card reveal">
+        <div class="project-tags"><span class="tag blue">SQL</span><span class="tag blue">Data Queries</span></div>
+        <div class="project-header">
+          <div class="project-icon sql"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="8" ry="3" stroke="#2997FF" stroke-width="1.5"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6" stroke="#2997FF" stroke-width="1.5"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" stroke="#64D2FF" stroke-width="1.5"/></svg></div>
+          <h3 class="project-title">SQL Portfolio</h3>
+        </div>
+        <p class="project-desc">Complex joins, window functions, CTEs, and query optimization across various datasets. Includes business scenario analyses, subquery patterns, and performance-tuned solutions.</p>
+        <span class="project-link">View Projects &#8594;</span>
+      </a>
+      <a href="https://public.tableau.com/app/profile/jonathan.le1677/vizzes" target="_blank" class="project-card depth-card reveal">
+        <div class="project-tags"><span class="tag orange">Tableau</span><span class="tag orange">Data Viz</span></div>
+        <div class="project-header">
+          <div class="project-icon tableau"><svg viewBox="0 0 24 24" fill="none"><rect x="11" y="3" width="2" height="7" rx="0.5" fill="#30D158"/><rect x="11" y="14" width="2" height="7" rx="0.5" fill="#30D158"/><rect x="3" y="11" width="7" height="2" rx="0.5" fill="#30D158"/><rect x="14" y="11" width="7" height="2" rx="0.5" fill="#30D158"/><rect x="16" y="5" width="1.5" height="4" rx="0.5" fill="#64D2FF" opacity="0.7"/><rect x="6.5" y="15" width="1.5" height="4" rx="0.5" fill="#64D2FF" opacity="0.7"/></svg></div>
+          <h3 class="project-title">Tableau Portfolio</h3>
+        </div>
+        <p class="project-desc">Interactive dashboards exploring sales, HR, and financial datasets with clean visual design. Features calculated fields, parameter controls, and storytelling through data.</p>
+        <span class="project-link">View Projects &#8594;</span>
+      </a>
+      <a href="https://github.com/jonathanlecontact/Excel" target="_blank" class="project-card depth-card reveal">
+        <div class="project-tags"><span class="tag green">Excel</span><span class="tag green">Modeling</span></div>
+        <div class="project-header">
+          <div class="project-icon excel"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#30D158" stroke-width="1.5"/><path d="M8 8l3.5 4L8 16" stroke="#30D158" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 8L12 12l3.5 4" stroke="#64D2FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 class="project-title">Excel Portfolio</h3>
+        </div>
+        <p class="project-desc">Pivot tables, advanced formulas, VBA automation, and financial modeling. Includes XLOOKUP, dynamic arrays, conditional formatting, and macro-driven workflows.</p>
+        <span class="project-link">View Projects &#8594;</span>
+      </a>
+      <a href="https://github.com/jonathanlecontact/Python" target="_blank" class="project-card depth-card reveal">
+        <div class="project-tags"><span class="tag purple">Python</span><span class="tag purple">Pandas</span><span class="tag blue">Analysis</span></div>
+        <div class="project-header">
+          <div class="project-icon python"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C9 3 7 4.5 7 7v2h4v1H6c-2 0-3 1.5-3 4s1 4 3 4h2v-3c0-1.5 1-3 3-3h4c1.5 0 3-1 3-3V7c0-2.5-2-4-5-4z" fill="rgba(41,151,255,0.3)" stroke="#2997FF" stroke-width="1"/><path d="M12 21c3 0 5-1.5 5-4v-2h-4v-1h5c2 0 3-1.5 3-4s-1-4-3-4h-2v3c0 1.5-1 3-3 3h-4c-1.5 0-3 1-3 3v4c0 2.5 2 4 5 4z" fill="rgba(191,90,242,0.3)" stroke="#BF5AF2" stroke-width="1"/><circle cx="9.5" cy="6" r="1" fill="#2997FF"/><circle cx="14.5" cy="18" r="1" fill="#BF5AF2"/></svg></div>
+          <h3 class="project-title">Python Portfolio</h3>
+        </div>
+        <p class="project-desc">EDA, data cleaning pipelines, and statistical analysis using pandas, matplotlib, and numpy. Features automated data wrangling, correlation analysis, and visual reporting.</p>
+        <span class="project-link">View Projects &#8594;</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="orb skills-orb"></div>
+    <p class="section-label reveal">Capabilities</p>
+    <h2 class="section-heading reveal">Tools of the trade.</h2>
+    <p class="section-sub reveal">A focused toolkit for extracting, transforming, and visualizing data at every stage.</p>
+    <div class="skills-grid">
+      <div class="skill-block depth-card reveal"><div class="skill-icon-wrap db">&#128452;</div><p class="skill-name">Databases</p><p class="skill-items">SQL<br>MySQL<br>PostgreSQL<br>BigQuery</p></div>
+      <div class="skill-block depth-card reveal"><div class="skill-icon-wrap viz">&#128202;</div><p class="skill-name">Visualization</p><p class="skill-items">Tableau<br>Power BI<br>Matplotlib<br>Seaborn</p></div>
+      <div class="skill-block depth-card reveal"><div class="skill-icon-wrap code">&#128013;</div><p class="skill-name">Programming</p><p class="skill-items">Python<br>Pandas<br>NumPy<br>Jupyter</p></div>
+      <div class="skill-block depth-card reveal"><div class="skill-icon-wrap prod">&#128203;</div><p class="skill-name">Productivity</p><p class="skill-items">Excel<br>Google Sheets<br>VBA<br>Pivot Tables</p></div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="orb contact-orb-1"></div>
     <div class="orb contact-orb-2"></div>
     <div class="contact-wrapper">
       <div class="contact-left reveal">
         <h2 class="contact-heading">Let's work<br>together.</h2>
-        <a href="mailto:jonathanlecontact@gmail.com" class="contact-email">jonathanlecontact@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#375d585956435f56595b525458594356544377505a565e5b1954585a" class="contact-email"><span class="__cf_email__" data-cfemail="91fbfefff0e5f9f0fffdf4f2feffe5f0f2e5d1f6fcf0f8fdbff2fefc">[email&#160;protected]</span></a>
         <div class="social-links">
           <a href="https://www.linkedin.com/in/jonathanlecontact/" target="_blank" class="social-link">&#8599; LinkedIn</a>
           <a href="https://github.com/jonathanlecontact" target="_blank" class="social-link">&#8599; GitHub</a>
@@ -548,7 +789,7 @@
       </div>
       <div class="contact-card depth-card reveal">
         <p>Open to full-time roles, freelance projects, and collaborations. If you have interesting data problems to solve, I'd love to hear about them.</p>
-        <div class="detail-row"><span class="detail-label">Email</span><span class="detail-value"><a href="mailto:jonathanlecontact@gmail.com">jonathanlecontact@gmail.com</a></span></div>
+        <div class="detail-row"><span class="detail-label">Email</span><span class="detail-value"><a href="/cdn-cgi/l/email-protection#4c2623222d38242d2220292f2322382d2f380c2b212d2520622f2321"><span class="__cf_email__" data-cfemail="177d787976637f76797b727478796376746357707a767e7b3974787a">[email&#160;protected]</span></a></span></div>
         <div class="detail-row"><span class="detail-label">Phone</span><span class="detail-value">(408) 667-1604</span></div>
         <div class="detail-row"><span class="detail-label">Location</span><span class="detail-value">San Jose, CA 95111</span></div>
         <div class="detail-row"><span class="detail-label">Status</span><span class="detail-value status">&#9679; Open to opportunities</span></div>
@@ -915,6 +1156,7 @@
         pointerY = t.clientY;
         glow.style.left = t.clientX + 'px';
         glow.style.top = t.clientY + 'px';
+        glow.style.opacity = '1';
       }, { passive: true });
 
       document.addEventListener('touchend', function() {
