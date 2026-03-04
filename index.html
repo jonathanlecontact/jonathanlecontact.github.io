@@ -116,7 +116,8 @@
     .exp-column-heading { font-size: 13px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
     .exp-column-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
     .exp-timeline { position: relative; }
-    .exp-timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, transparent 0%, var(--border) 10%, var(--border) 90%, transparent 100%); }
+    .exp-timeline::before { content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px; width: 1px; background: var(--border); }
+    .exp-timeline.single::before { display: none; }
     .exp-item { display: flex; gap: 24px; padding-bottom: 20px; position: relative; }
     .exp-item:last-child { padding-bottom: 0; }
     .exp-dot-wrap { position: relative; flex-shrink: 0; width: 32px; display: flex; justify-content: center; padding-top: 4px; }
@@ -151,13 +152,32 @@
 
     @media (max-width: 900px) {
       .exp-cert-wrapper { grid-template-columns: 1fr; }
-      .exp-timeline::before { left: 11px; }
+      .exp-timeline::before { left: 11px; top: 10px; bottom: 10px; }
       .exp-dot-wrap { width: 24px; }
       .exp-item { gap: 16px; }
       .exp-card { padding: 20px 16px; }
+      .cert-card { padding: 16px 18px; gap: 12px; }
+      .cert-icon { width: 36px; height: 36px; border-radius: 10px; }
+      .contact-email { font-size: 14px; word-break: break-all; }
     }
     @media (max-width: 560px) {
       .exp-card-header { flex-direction: column; }
+      .exp-role { font-size: 15px; }
+      .exp-company { font-size: 12px; }
+      .exp-desc { font-size: 12px; }
+      .exp-tag { font-size: 9px; padding: 2px 8px; }
+      .exp-column-heading { font-size: 11px; }
+      .cert-card { flex-direction: row; padding: 14px 14px; gap: 10px; }
+      .cert-icon { width: 32px; height: 32px; min-width: 32px; border-radius: 8px; }
+      .cert-name { font-size: 12px; }
+      .cert-issuer { font-size: 11px; }
+      .cert-hours { font-size: 10px; }
+      .cert-meta .exp-tag { font-size: 9px; }
+      .contact-email { font-size: 13px; }
+      .detail-value { font-size: 12px; word-break: break-all; }
+      .edu-school { font-size: 17px; }
+      .edu-degree { font-size: 13px; }
+      .edu-detail { font-size: 13px; }
     }
 
     /* ===== ENHANCED PROJECTS ===== */
@@ -250,6 +270,11 @@
       .contact-heading { font-size: 32px; }
       .photo-badge { min-width: 190px; }
       .photo-badge-inner { padding: 10px 14px; }
+      .project-metrics { gap: 14px; }
+      .project-metric-value { font-size: 18px; }
+      .project-metric-label { font-size: 10px; }
+      .project-desc { font-size: 13px; }
+      .project-title { font-size: 20px; }
     }
 
     /* ===== LOADING ANIMATION ===== */
@@ -503,7 +528,7 @@
       <!-- LEFT: Experience -->
       <div class="reveal">
         <p class="exp-column-heading">Experience</p>
-        <div class="exp-timeline">
+        <div class="exp-timeline single">
 
           <div class="exp-item">
             <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
@@ -523,6 +548,12 @@
               </div>
             </div>
           </div>
+
+        </div>
+
+        <div style="height:36px"></div>
+
+        <div class="exp-timeline">
 
           <div class="exp-item">
             <div class="exp-dot-wrap"><div class="exp-dot"></div></div>
@@ -781,7 +812,7 @@
     <div class="contact-wrapper">
       <div class="contact-left reveal">
         <h2 class="contact-heading">Let's work<br>together.</h2>
-        <a href="/cdn-cgi/l/email-protection#375d585956435f56595b525458594356544377505a565e5b1954585a" class="contact-email"><span class="__cf_email__" data-cfemail="91fbfefff0e5f9f0fffdf4f2feffe5f0f2e5d1f6fcf0f8fdbff2fefc">[email&#160;protected]</span></a>
+        <a href="mailto:jonathanlecontact@gmail.com" class="contact-email">jonathanlecontact@gmail.com</a>
         <div class="social-links">
           <a href="https://www.linkedin.com/in/jonathanlecontact/" target="_blank" class="social-link">&#8599; LinkedIn</a>
           <a href="https://github.com/jonathanlecontact" target="_blank" class="social-link">&#8599; GitHub</a>
@@ -789,7 +820,7 @@
       </div>
       <div class="contact-card depth-card reveal">
         <p>Open to full-time roles, freelance projects, and collaborations. If you have interesting data problems to solve, I'd love to hear about them.</p>
-        <div class="detail-row"><span class="detail-label">Email</span><span class="detail-value"><a href="/cdn-cgi/l/email-protection#4c2623222d38242d2220292f2322382d2f380c2b212d2520622f2321"><span class="__cf_email__" data-cfemail="177d787976637f76797b727478796376746357707a767e7b3974787a">[email&#160;protected]</span></a></span></div>
+        <div class="detail-row"><span class="detail-label">Email</span><span class="detail-value"><a href="mailto:jonathanlecontact@gmail.com">jonathanlecontact@gmail.com</a></span></div>
         <div class="detail-row"><span class="detail-label">Phone</span><span class="detail-value">(408) 667-1604</span></div>
         <div class="detail-row"><span class="detail-label">Location</span><span class="detail-value">San Jose, CA 95111</span></div>
         <div class="detail-row"><span class="detail-label">Status</span><span class="detail-value status">&#9679; Open to opportunities</span></div>
